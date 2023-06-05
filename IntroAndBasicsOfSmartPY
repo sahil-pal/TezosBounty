@@ -1,0 +1,66 @@
+Tutorial: Writing and Deploying Smart Contracts on Tezos using SmartPy and LIGO
+
+Introduction:
+This tutorial will guide you through the step-by-step process of writing and deploying smart contracts on Tezos using SmartPy and LIGO. By the end of this tutorial, you will be able to create and deploy your own smart contracts on the Tezos blockchain.
+
+Prerequisites:
+- Tezos SDK installed (refer to the Tezos documentation website)
+- Text editor or IDE for code editing
+
+Step 1: Install the Tezos SDK
+1. Follow the instructions provided in the Tezos documentation website to install the Tezos software development kit (SDK) on your machine.
+
+Step 2: Create a New Tezos Project
+1. Open a terminal or command prompt.
+
+2. Navigate to the desired directory where you want to create your Tezos project.
+
+3. Run the following command to create a new Tezos project:
+```
+tezos-client originate contract <contract_name> transferring 0 from <manager_address> running <contract_path> --init "<initial_storage>"
+```
+Replace `<contract_name>` with the desired name of your smart contract, `<manager_address>` with the address of the manager account, `<contract_path>` with the path to your smart contract code, and `<initial_storage>` with the initial storage state of your contract.
+
+Step 3: Write a Smart Contract in SmartPy
+1. Visit the SmartPy website (link provided) and explore the documentation and examples to familiarize yourself with the SmartPy language.
+
+2. Open your preferred text editor or IDE and create a new file with a `.py` extension.
+
+3. Import the necessary SmartPy libraries by adding the following code at the beginning of your file:
+```
+import smartpy as sp
+```
+
+4. Define your smart contract class and its initial storage by adding the following code:
+```
+class MyContract(sp.Contract):
+    def __init__(self):
+        self.init(storage=0)  # Replace 0 with the desired initial value of your contract storage
+```
+
+5. Implement the entry points and logic of your smart contract by adding additional methods to the `MyContract` class.
+
+Step 4: Compile the Smart Contract
+1. Open a terminal or command prompt.
+
+2. Navigate to the directory where your smart contract file is located.
+
+3. Run the following command to compile your SmartPy contract to Michelson, the low-level language of Tezos:
+```
+smartpy-cli compile <contract_file.py> <output_directory>
+```
+Replace `<contract_file.py>` with the name of your smart contract file and `<output_directory>` with the desired directory to store the compiled contract.
+
+Step 5: Deploy the Smart Contract to the Tezos Blockchain
+1. Open a terminal or command prompt.
+
+2. Navigate to the directory where your compiled contract is located.
+
+3. Run the following command to deploy your smart contract to the Tezos blockchain:
+```
+tezos-client originate contract <contract_name> transferring 0 from <manager_address> running <contract_path> --init "<initial_storage>" --burn-cap <burn_cap>
+```
+Replace `<contract_name>` with the desired name of your smart contract, `<manager_address>` with the address of the manager account, `<contract_path>` with the path to your compiled contract, `<initial_storage>` with the initial storage state of your contract, and `<burn_cap>` with the desired burn cap (maximum fee).
+
+Conclusion:
+Congratulations! You have successfully learned how to write and deploy smart contracts on Tezos using SmartPy and LIGO. This tutorial provides you with a solid foundation to start building and deploying your own smart contracts on the Tezos blockchain. Remember to explore the provided resources for further information and examples.
